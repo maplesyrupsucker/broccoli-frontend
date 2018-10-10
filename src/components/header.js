@@ -98,9 +98,9 @@ class Header extends Component {
         const { menuActive, loggedIn } = this.state
 
         const menu = [
-            { title: 'Home', url: '/' },
             { title: 'Login', url: '/login' },
             { title: 'Register', url: '/register' },
+            { title: 'Logout', url: '/logout', auth: true },
             { title: 'Contacts', url: '/constacts', auth: true },
             { title: 'Groups', url: '/groups', auth: true }
         ]
@@ -113,13 +113,21 @@ class Header extends Component {
                 </MobileMenu>
                 <MenuContainer>
                     <MenuList show={menuActive}>
+                        <MenuItem>
+                            <Link to='/'>Home</Link>
+                        </MenuItem>
                         {menu.map((item, index) => {
                             if (!loggedIn && !item.auth) return (
-                                <MenuItem>
+                                <MenuItem key={item.title + index}>
                                     <Link to={item.url}>{item.title}</Link>
                                 </MenuItem>
                             )
 
+                            if (loggedIn && item.auth) return (
+                                <MenuItem key={item.title + index}>
+                                    <Link to={item.url}>{item.title}</Link>
+                                </MenuItem>
+                            )
                         })}
 
                     </MenuList>
