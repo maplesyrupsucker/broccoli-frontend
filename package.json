@@ -11,6 +11,9 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
+    "redux": "^4.0.0",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^3.4.10"
   },
   "scripts": {
@@ -26,6 +29,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "redux-devtools": "^3.4.1"
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-extension": "^2.13.5"
   }
 }

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 import { Grid, Col, Row } from 'react-bootstrap'
 
-
 class Home extends Component {
     render() {
         return (
