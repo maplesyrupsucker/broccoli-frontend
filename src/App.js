@@ -13,6 +13,9 @@ import Login from './pages/login'
 import Register from './pages/register'
 import Contacts from './pages/contacts'
 import Groups from './pages/groups'
+
+import Wallet from './pages/wallet'
+
 import { injectGlobal } from 'styled-components';
 
 import store, { persistor } from './data/store'
@@ -46,6 +49,7 @@ class App extends Component {
               <Route path="/register" component={Register} />
               <Route path="/contacts" component={Register} />
               <Route path="/groups" component={Groups} />
+              <Route path="/wallet" component={Wallet} />
             </Layout>
           </Router>
         </PersistGate>
