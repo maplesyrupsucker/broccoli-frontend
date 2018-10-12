@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Provider, connect } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import Header from './components/header'
+import Header from './components/Header'
+import Layout from './components/Layout'
 
 import Home from './pages/index'
 import Login from './pages/login'
@@ -23,7 +24,10 @@ injectGlobal`
   }
 
   * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"body sans-serifhtml
+    font-size: 20px;
+    font-weight: 400;
   }
 
 `;
@@ -36,14 +40,13 @@ class App extends Component {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Router>
-            <div>
-              <Header />
+            <Layout>
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/contacts" component={Register} />
               <Route path="/groups" component={Groups} />
-            </div>
+            </Layout>
           </Router>
         </PersistGate>
       </Provider>

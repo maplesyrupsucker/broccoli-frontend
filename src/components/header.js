@@ -5,7 +5,7 @@ import { FaBars } from "react-icons/fa";
 
 import { media } from '../styles/utils'
 
-const Topbar = styled.header`
+/* const Topbar = styled.header`
     background: green;
     display: flex;
     flex-direction: row;
@@ -74,6 +74,82 @@ const MenuContainer = styled.div`
         width: unset;
     `}
 `
+ */
+
+const Nav = styled('nav')`
+    background: #24362a;
+    padding: .5rem 1rem;
+`
+
+const Container = styled('div')`
+    max-width: 960px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+`
+
+const Logo = styled(Link)`
+    color: #fff;
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+`
+
+const Navbar = styled('div')`
+    display: ${props => props.show ? 'inline-block' : 'none'};
+    width: 100%;
+
+    ${media.medium`
+        display: flex;
+        flex-basis: auto;
+        width: unset;
+    `}
+`
+
+const NavList = styled('ul')`
+    list-style: none;
+    flex-direction: row;
+    margin: 0;
+    align-items: center;
+`
+
+const NavItem = styled('li')`
+
+`
+
+const NavLink = styled(Link)`
+    color: #fff;
+    text-decoration: none;
+`
+
+const MobileMenu = styled('div')`
+    display: inline-block;
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    ${media.medium`
+        display: none;
+        justify-self: flex-end;
+    `}
+`
+
+
 
 class Header extends Component {
     constructor(props) {
@@ -97,6 +173,9 @@ class Header extends Component {
     render() {
         const { menuActive, loggedIn } = this.state
 
+        const showNavbar = true;
+
+
         const menu = [
             { title: 'Login', url: '/login' },
             { title: 'Register', url: '/register' },
@@ -106,7 +185,62 @@ class Header extends Component {
         ]
 
         return (
-            <Topbar>
+
+            <Nav>
+                <Container>
+                    <Logo to="/">🥦 Broccoli</Logo>
+                    {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> */}
+                    <Navbar show={showNavbar}>
+                        <NavList>
+
+                            <NavItem>
+                                <NavLink to="/about">About</NavLink>
+                            </NavItem>
+
+                        </NavList>
+                    </Navbar>
+                    <MobileMenu><FaBars size={30} color="rgba(255, 255, 255, 0.5)" /></MobileMenu>
+                </Container>
+            </Nav>
+
+
+        )
+    }
+}
+
+export default Header
+
+
+
+/* 
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+           <a class="navbar-brand" href="/">🥦 Broccoli</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+
+           <div class="collapse navbar-collapse right" id="navbarSupportedContent">
+             <ul class="navbar-nav mr-auto">
+              
+               <li class="nav-item active">
+                 <a class="nav-link" href="/about">About</a>
+               </li>
+               
+             </ul>
+       </div>
+   </div>
+</nav>
+
+*/
+
+
+/*
+
+<Topbar>
                 <Logo>Broccoli.cash</Logo>
                 <MobileMenu onClick={this.handleMenuOpen}>
                     <FaBars color="#fff" size={24} />
@@ -133,8 +267,5 @@ class Header extends Component {
                     </MenuList>
                 </MenuContainer>
             </Topbar>
-        )
-    }
-}
 
-export default Header
+*/

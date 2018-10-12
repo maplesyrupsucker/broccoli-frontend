@@ -6,6 +6,9 @@ import {
     LOGIN_SUCCESS
 } from './constants'
 
+import {
+    BROCCOLI_LOGIN
+} from '../api'
 
 
 export const loginBegin = () => {
@@ -30,15 +33,16 @@ export const login = (username, password): Function => {
         dispatch(getEuroPriceBegin())
 
         // post request to login
-
         
-        /* fetch("https://api.coinmarketcap.com/v2/ticker/1831/?convert=EUR")
+        fetch(BROCCOLI_LOGIN, {
+
+        })
             .then(response => response.text())
             .then(text => JSON.parse(text))
             .then(json => dispatch(getEuroPriceSuccess(json.data)))
             .catch(e => {
                 console.error(e)
                 dispatch(getEuroPriceFail())
-            }) */
+            })
     }
 }
