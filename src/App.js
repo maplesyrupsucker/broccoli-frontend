@@ -26,11 +26,13 @@ injectGlobal`
     padding: 0;
   }
 
-  * {
+  *, ::after, ::before  {
     font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
                   -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"body sans-serifhtml
     font-size: 20px;
     font-weight: 400;
+    box-sizing: border-box;
+
   }
 
 `;

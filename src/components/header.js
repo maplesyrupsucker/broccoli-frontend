@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
-import { FaBars } from "react-icons/fa";
+
+import { IoIosMenu } from "react-icons/io";
 
 import { media } from '../styles/utils'
 
@@ -79,19 +80,29 @@ const MenuContainer = styled.div`
 const Nav = styled('nav')`
     background: #24362a;
     padding: .5rem 1rem;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: .5rem 1rem;
 `
 
 const Container = styled('div')`
     max-width: 960px;
     width: 100%;
     margin: auto;
-    display: flex;
-    flex-direction: row;
+    display: flex;  
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+
+    
 `
 
 const Logo = styled(Link)`
@@ -109,21 +120,33 @@ const Logo = styled(Link)`
 `
 
 const Navbar = styled('div')`
-    display: ${props => props.show ? 'inline-block' : 'none'};
-    width: 100%;
-
-    ${media.medium`
+    display: ${props => props.show ? 'block' : 'none'};
+    
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    
+    ${media.large`
         display: flex;
         flex-basis: auto;
         width: unset;
+        justify-content: flex-end;
+
     `}
 `
 
 const NavList = styled('ul')`
-    list-style: none;
-    flex-direction: row;
-    margin: 0;
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    list-style: none;
+
+    ${media.large`
+        flex-direction: row;
+    `}
 `
 
 const NavItem = styled('li')`
@@ -133,6 +156,8 @@ const NavItem = styled('li')`
 const NavLink = styled(Link)`
     color: #fff;
     text-decoration: none;
+    padding: .5rem 1rem;
+    display: block;
 `
 
 const MobileMenu = styled('div')`
@@ -143,8 +168,9 @@ const MobileMenu = styled('div')`
     background-color: transparent;
     border: 1px solid transparent;
     border-radius: .25rem;
-    ${media.medium`
+    ${media.large`
         display: none;
+        
         justify-self: flex-end;
     `}
 `
@@ -164,7 +190,6 @@ class Header extends Component {
     }
 
     handleMenuOpen() {
-        console.log(this.state.menuActive)
         this.setState({
             menuActive: !this.state.menuActive
         })
@@ -192,16 +217,20 @@ class Header extends Component {
                     {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button> */}
-                    <Navbar show={showNavbar}>
+                    <MobileMenu onClick={this.handleMenuOpen}><IoIosMenu size={30} color="rgba(255, 255, 255, 0.5)" /></MobileMenu>
+                    <Navbar show={menuActive}>
                         <NavList>
+                            {menu.map((item, index) => {
 
-                            <NavItem>
-                                <NavLink to="/about">About</NavLink>
-                            </NavItem>
+                                return (
+                                    <NavItem key={index}>
+                                        <NavLink to={item.url}>{item.title}</NavLink>
+                                    </NavItem>
+                                )
+                            })}
 
                         </NavList>
                     </Navbar>
-                    <MobileMenu><FaBars size={30} color="rgba(255, 255, 255, 0.5)" /></MobileMenu>
                 </Container>
             </Nav>
 
