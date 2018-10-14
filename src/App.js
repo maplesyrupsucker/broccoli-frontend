@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import Header from './components/Header'
 import Layout from './components/Layout'
 
 import Home from './pages/index'
 import Login from './pages/login'
 import Register from './pages/register'
-import Contacts from './pages/contacts'
 import Groups from './pages/groups'
+import Dashboard from './pages/dashboard';
 
 import Wallet from './pages/wallet'
 
@@ -49,7 +48,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
-              <Route path="/contacts" component={Register} />
+              <Route path="/dashboard" component={Dashboard} />
               <Route path="/groups" component={Groups} />
               <Route path="/wallet" component={Wallet} />
             </Layout>

@@ -205,7 +205,7 @@ class Header extends Component {
             { title: 'Login', url: '/login' },
             { title: 'Register', url: '/register' },
             { title: 'Logout', url: '/logout', auth: true },
-            { title: 'Contacts', url: '/constacts', auth: true },
+            { title: 'Contacts', url: '/contacts', auth: true },
             { title: 'Groups', url: '/groups', auth: true }
         ]
 

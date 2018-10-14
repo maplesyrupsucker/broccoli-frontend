@@ -6,6 +6,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import meta from './meta/reducer'
+import users from './users/reducer'
 
 const logger = () => {
     return next => action => {
@@ -22,7 +23,8 @@ const middleware = [
 ]
 
 const rootReducer = combineReducers({
-    meta
+    meta,
+    users
 })
 
 const persistConfig = {
